@@ -1,0 +1,22 @@
+resource "local_file" "openapi_spec" {
+  filename = "${path.module}/openapi.yaml"
+
+  content = <<EOF
+openapi: 3.0.0
+info:
+  title: Example API
+  version: 1.0.0
+paths:
+  /hello:
+    get:
+      summary: Hello endpoint
+      operationId: hello
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: string
+EOF
+}
